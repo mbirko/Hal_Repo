@@ -5,7 +5,7 @@ open a terminal and write down which commands you use to:
 - Display the full path of the current folder?
   - pwd prints working directory
 - What does the “∼” mean in relation to a path in Unix?
-  - ~ is the icon for root
+  - ~ is the icon for home directory (/ is for root)
 - Get a list of all ﬁles and folders in the current folder?
   - ls is the command to list information about the current folder - followed by -a to show all files or a -all to show eerything about the files
 - Change directory to /home/stud?
