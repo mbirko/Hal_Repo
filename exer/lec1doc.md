@@ -42,6 +42,7 @@ open a terminal and write down which commands you use to:
   - using command ./[filename] will run the program 
 - Run the program, change file permissions with chmod if required (tips here)
 
+
 Explain how ﬁle permissions work - check the chmod and read its man page.
 -   it is either possible to have the permission to read, write or execute files. The permissions of all files in the directory can be read using ls -all were the r is read permission, w is write permission, x is execute permission and - is the lack of permission.
 
