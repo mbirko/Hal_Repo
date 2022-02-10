@@ -1,9 +1,7 @@
 # Lets get started with Linux!
 
 the purpuce of this exersize is to get familiarised with the linux enviroment. 
-
-## 1.1
-
+## Olivers Notes 1.1
 open a terminal and write down which commands you use to:
 
 - Display the full path of the current folder?
@@ -62,7 +60,6 @@ Now, write a small shell script that echos "hello world" every second. Search fo
 Note down your script and the apropriate commands to make it executable and how to terminate it.
 
 ## Birks Notes 1.2
-
 Open a terminal and write down which commands you use to:
 - Display the full path of the current folder
   - The cmd pwd will display the full path of the current folder
@@ -123,14 +120,42 @@ Now kill the program Kate you just started
 
 ### shell scripts 
 - Write down which commands you use to:
-  
+  vim script.sh
+    Creats a file and opens vim editor.
+  ``` shell
+    while (true)
+      do
+        echo "Hello Linux!"
+        sleep 1s
+      done
+  ```
+  ./script.sh
+### Last taskes 
+
+
+
 - Get a list of the currently running processes (programs)
+  - jobs 
 - Display the current date and time in the terminal
+  - date
 - Find the IP address of the network adapter ens33xxx
+  - On my system this is named enp0s5 insted 
+  - the ip of this and other infaces is found with ```ifconfig```
 - Explain what the ﬁle /var/log/syslog does
+  - i assume its a system log, og everything that is logged by the system. 
+  - 
 - Try using running less /var/log/syslog and read the manual for less. What is it good for?
+  - you can see what has happen after and while you ran a processes
+  - 
 - What happens when you run dmesg?
 - Extending the above like this: dmesg|less, what does it do?
+  - pipes the output of dmesg to less
+  - less is an text expolore
 - Determine the CPU type by looking the directory /proc
+  - Opeing the file /proc/cpuinfo gives you the info you need
+  
 
 
+```
+8	0.701008276	10.83.252.23	192.168.44.128	TCP	60	443 → 36480 [SYN, ACK] Seq=0 Ack=1 Win=64240 Len=0 MSS=1460
+```
