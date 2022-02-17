@@ -1,0 +1,14 @@
+@startuml
+actor "User 1"
+actor "User 2"
+"User 1" -> "Sleepy Reader": Read
+activate "Sleepy Reader"
+"Sleepy Reader" -> "Sleepy Reader": Wait for Event (Interruptible)
+deactivate "Sleepy Reader"
+"User 2" -> "Sleepy Reader": Write
+activate "Sleepy Reader"
+"Sleepy Reader" -> "Sleepy Reader": Wake Up (Interruptible)
+"User 1" <-- "Sleepy Reader": Return (Read)
+"User 2" <-- "Sleepy Reader": Return (Write)
+deactivate "Sleepy Reader"
+@enduml

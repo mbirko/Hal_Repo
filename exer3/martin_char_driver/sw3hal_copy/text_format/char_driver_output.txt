@@ -1,0 +1,11 @@
+ext_format$ ./my_formatter first second 
+Running my formatting tool!
+#### Start File: Start of formatted text ####
+===================================================================
+first
+===================================================================
+
+#### End File: thanks folks ####
+Formatting completed!
+stud@stud-virtual-machine:~/Hal_Repo/martin_exer3_char_driver/sw3hal/text_format$ 
+

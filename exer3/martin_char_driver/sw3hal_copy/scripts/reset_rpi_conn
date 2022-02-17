@@ -1,0 +1,14 @@
+#!/bin/bash
+if  ping 10.9.8.2 -w 1 | grep -q '100% packet loss'
+then
+    echo "Connection failure"
+    if lsusb | grep -q 'Netchip'
+    then
+        echo "Resetting usb device"
+        number=$(lsusb | grep 'Netchip' | grep -o -E '[0-9]+' | sed -n 2p)
+        sudo /home/stud/bin/reset_usb.py -d $number
+    else
+        echo "RPi not connected to VM"
+        exit
+    fi
+fi
