@@ -72,28 +72,27 @@ float convertToTemp(uint8_t firstByte, uint8_t secondByte)
     return (float)out/2.0;
 }
 // read temperature from lm75
-float readTemp(unsigned long addr){
-	int fd;
-	char err;
-	unsigned char data[2];
-	uint8_t byte1;
-	uint8_t byte2;
-	
-	// open i2c device
-	fd = open("/dev/i2c-2",O_RDONLY); 
-	
-	// set addres of i2c slave
-	err = ioctl(fd,I2C_SLAVE,addr); 
-	
-	// read from lm75
-	read(fd,data,2);
+int readTemp(unsigned long addr, unsigned long adapter_no){
+	int file;
+	int output;
+  	char filename[20];
+	int buf[2];
+  	snprintf(filename, 19, "/dev/i2c-%d", adapter_no);
+  	file = open(filename, O_RDONLY);
+  	if (file < 0) {
+		printf("Failed with err: %s \n\r", strerror(errno));
+    	return 1;
+  	}
 
-	byte1 = data[0];
-	byte2 = data[1];
-	
-	fd = close(fd);
-	
-	return convertToTemp(byte1, byte2);
+  	if (ioctl(file, I2C_SLAVE, addr) < 0) {
+		printf("Failed with err: %s \n\r", strerror(errno));
+    	return 2;
+  	}
+  	
+	read(file, buf, 2);
+    
+	return buf[0];
+		
 }
 
 int main()
@@ -103,17 +102,17 @@ int main()
     
     // set direction to out for LED's
     gpio_direction("/sys/class/gpio/gpio26/direction", "out");
-    double temperature = 0;
+    char temperature;
 
 	while(1)
 	{
 		// read and save temperature
-		temperature = readTemp(0x48);
+		temperature = readTemp(0x48, 2);
 	   	// print temperature to stdout	
-		printf("LM75: Temperature is = %d\n\r", temperature);
-		
+		printf("Temperature is = %d \n\r", temperature);
+		printf(&temperature);	
 		// evaluate on temperature reading
-		if(temperature > 25){
+		if(temperature >= 25){
 			// turn on LED0 if temperature is over 25	
 			gpio_value("/sys/class/gpio/gpio26/value", "1");
 		}
