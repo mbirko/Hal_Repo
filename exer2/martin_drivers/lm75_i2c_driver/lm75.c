@@ -51,7 +51,7 @@ void gpio_value(char* path_gpio, char* value){
 	close(fd);
 }
 // convert reading frin LM75 to temperature in decimal
-float convertToTemp(uint8_t firstByte, uint8_t secondByte)
+float convertToTemp(char firstByte, char  secondByte)
 {
     // First byte assigned to unsign 16 bit int
     uint16_t out = firstByte; 
@@ -72,27 +72,28 @@ float convertToTemp(uint8_t firstByte, uint8_t secondByte)
     return (float)out/2.0;
 }
 // read temperature from lm75
-int readTemp(unsigned long addr, unsigned long adapter_no){
+float readTemp(unsigned long addr, unsigned long adapter_no){
 	int file;
 	int output;
   	char filename[20];
-	int buf[2];
-  	snprintf(filename, 19, "/dev/i2c-%d", adapter_no);
+	char buf[2];
+  	
+	// Open file with adaptor number	
+	snprintf(filename, 19, "/dev/i2c-%d", adapter_no);
   	file = open(filename, O_RDONLY);
   	if (file < 0) {
 		printf("Failed with err: %s \n\r", strerror(errno));
     	return 1;
   	}
-
+	
   	if (ioctl(file, I2C_SLAVE, addr) < 0) {
 		printf("Failed with err: %s \n\r", strerror(errno));
     	return 2;
   	}
   	
 	read(file, buf, 2);
-    
-	return buf[0];
-		
+	close(file);		
+	return convertToTemp(buf[0],buf[1]);
 }
 
 int main()
@@ -102,15 +103,15 @@ int main()
     
     // set direction to out for LED's
     gpio_direction("/sys/class/gpio/gpio26/direction", "out");
-    char temperature;
+    double temperature;
 
 	while(1)
 	{
 		// read and save temperature
 		temperature = readTemp(0x48, 2);
 	   	// print temperature to stdout	
-		printf("Temperature is = %d \n\r", temperature);
-		printf(&temperature);	
+		printf("Temp is = %d \n\r", temperature);
+			
 		// evaluate on temperature reading
 		if(temperature >= 25){
 			// turn on LED0 if temperature is over 25	
@@ -125,4 +126,6 @@ int main()
 	}	
 	return 1;
 }
+
+
 
