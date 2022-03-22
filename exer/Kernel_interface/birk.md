@@ -72,4 +72,3 @@ the bytes_read tells how many bytes where read.
     int bytes_read;
     bytes_written = read(fd, buffer, write_size_request);
 ```
-

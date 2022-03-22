@@ -1,0 +1,1 @@
+cmd_/home/stud/Hal_Repo/martin_exer3/hello.ko := arm-poky-linux-gnueabi-ld -r -EL --build-id  -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds -o /home/stud/Hal_Repo/martin_exer3/hello.ko /home/stud/Hal_Repo/martin_exer3/hello.o /home/stud/Hal_Repo/martin_exer3/hello.mod.o;  true

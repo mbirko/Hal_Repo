@@ -1,7 +1,9 @@
-# Lets get started with Linux! 
+# Lets get started with Linux!
+
 the purpuce of this exersize is to get familiarised with the linux enviroment. 
 ## Olivers Notes 1.1
 open a terminal and write down which commands you use to:
+
 - Display the full path of the current folder?
   - pwd prints working directory
 - What does the “∼” mean in relation to a path in Unix?
@@ -42,15 +44,16 @@ open a terminal and write down which commands you use to:
   - using command ./[filename] will run the program 
 - Run the program, change file permissions with chmod if required (tips here)
 
-
 Explain how ﬁle permissions work - check the chmod and read its man page.
--   it is either possible to have the permission to read, write or execute files. The permissions of all files in the directory can be read using ls -all were the r is read permission, w is write permission, x is execute permission and - is the lack of permission.
+
+- it is either possible to have the permission to read, write or execute files. The permissions of all files in the directory can be read using ls -all were the r is read permission, w is write permission, x is execute permission and - is the lack of permission.
 
 Write down which commands you use to:
--   Run the program nano in the background
-    -   By the use of & after a command (e.g nano &) lets a command run things in the background as well as give you the ID of the program running in the background 
--   Now kill the program Kate you just started
-    -   using the kill command followed by an ID lets you kill a program. The kill command has a bunch of different ways to stop a program hereunder are signals used to define the way to close the program in question. Kill -9 immediatly kills a program. 
+
+- Run the program nano in the background
+  - By the use of & after a command (e.g nano &) lets a command run things in the background as well as give you the ID of the program running in the background 
+- Now kill the program Kate you just started
+  - using the kill command followed by an ID lets you kill a program. The kill command has a bunch of different ways to stop a program hereunder are signals used to define the way to close the program in question. Kill -9 immediatly kills a program. 
 
 Now, write a small shell script that echos "hello world" every second. Search for bash-scripts, while-do, sleep and echo. Remember to make your shell script executable using the program chmod.
 

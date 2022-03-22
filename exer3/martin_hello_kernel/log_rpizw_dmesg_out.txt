@@ -1,0 +1,4 @@
+[ 7682.705231] Hello, woarld
+[ 7687.608687] Goodbye, woarld
+root@raspberrypi0-wifi:~#  
+
